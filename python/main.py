@@ -1,35 +1,36 @@
-import math
+import matplotlib.pyplot as plt
 
-class DistanciaPonto:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+def calculate_distance(x1, y1, x2, y2):
+    dx = x2 - x1
+    dy = y2 - y1
+    return ((dx ** 2) + (dy ** 2)) ** 0.5
 
-    def calcular_distancia(self, outro_ponto):
-        return math.sqrt((outro_ponto.x - self.x) ** 2 + (outro_ponto.y - self.y) ** 2)
+def draw_line(x1, y1, x2, y2):
+    plt.plot([x1, x2], [y1, y2], marker="o")
+    '''plt.plot([dx, dy],marker="o")'''
+    '''plt.plot([x2, y2], marker="o")'''
+    ''' plt.plot([distancia], marker="o")'''
+    plt.xlabel('X')
+    plt.ylabel('Y')
+    plt.title('Reta no Plano Cartesiano')
+    plt.grid(True)
+    plt.show()
 
-class Main:
-    def __init__(self):
-        pass
+def draw():
+  plt.plot([distancia], marker="0")
+  plt.xlabel('X')
+  plt.ylabel('Y')
+  plt.title('Reta no Plano Cartesiano')
+  plt.grid(True)
+  plt.show()
+  
+x1 = int(input("Digite a coordenada X do primeiro ponto: "))
+y1 = int(input("Digite a coordenada Y do primeiro ponto: "))
+x2 = int(input("\nDigite a coordenada X do segundo ponto: "))
+y2 = int(input("Digite a coordenada Y do segundo ponto: "))
 
-    def run(self):
-        print("Digite as coordenadas do primeiro ponto:")
-        x1 = float(input("Coordenada x: "))
-        y1 = float(input("Coordenada y: "))
+distancia = calculate_distance(x1, y1, x2, y2)
+print(f"\nA distância entre os pontos ({x1}, {y1}) e ({x2}, {y2}) é {distancia:.2f}")
 
-        print("\nDigite as coordenadas do segundo ponto:")
-        x2 = float(input("Coordenada x: "))
-        y2 = float(input("Coordenada y: "))
-
-        ponto1 = DistanciaPonto(x1, y1)
-        ponto2 = DistanciaPonto(x2, y2)
-
-        distancia = ponto1.calcular_distancia(ponto2)
-
-        print(f"\nA distância entre os pontos ({x1}, {y1}) e ({x2}, {y2}) é: {distancia:.2f}")
-
-
-# Instanciar e executar a classe Main
-if __name__ == "__main__":
-    programa = Main()
-    programa.run()
+'''draw()'''
+draw_line(x1, y1, x2, y2)
